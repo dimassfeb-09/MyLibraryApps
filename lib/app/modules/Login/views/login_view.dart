@@ -8,7 +8,10 @@ import '../../../../assets/utils/Colors.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
-  const LoginView({Key? key}) : super(key: key);
+  LoginView({Key? key}) : super(key: key);
+
+  LoginController login = LoginController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +61,7 @@ class LoginView extends GetView<LoginController> {
                   ),
                   SizedBox(height: 6),
                   TextField(
+                    controller: login.email,
                     autocorrect: false,
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.email_outlined),
@@ -79,6 +83,7 @@ class LoginView extends GetView<LoginController> {
                   ),
                   SizedBox(height: 6),
                   TextField(
+                    controller: login.password,
                     autocorrect: false,
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.lock_outline),
@@ -125,7 +130,9 @@ class LoginView extends GetView<LoginController> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      login.Login();
+                    },
                     borderRadius: BorderRadius.circular(10),
                     hoverColor: Color.fromARGB(255, 10, 46, 175),
                     splashColor: Color.fromARGB(255, 10, 46, 175),
